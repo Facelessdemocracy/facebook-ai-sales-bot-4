@@ -1,0 +1,9 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+pages.json
+data/*.db
+data/*.db-shm
+data/*.db-wal
+*.log

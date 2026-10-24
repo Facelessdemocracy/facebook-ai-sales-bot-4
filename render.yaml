@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: salesbot-pro
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    healthCheckPath: /
+    disk:
+      name: salesbot-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DATABASE_PATH
+        value: /var/data/sales_bot.db
+      - key: PAGES_CONFIG_PATH
+        value: /var/data/pages.json
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: META_VERIFY_TOKEN
+        sync: false
+      - key: META_APP_SECRET
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini

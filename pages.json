@@ -1,0 +1,14 @@
+{
+  "pages": [
+    {
+      "page_id": "1269145529611918",
+      "page_name": "দেশি সরিষা বালিশ",
+      "enabled": true,
+      "page_access_token": "EAAS8K1xXQHYBS6M1szoPDbd4tJseif5tJlXo5qZBityE79qlNzGxbur4ly4iw1CNdpUm0rlAiDybb1Fs8A07aZB9mazjo7t8pKvLKqlc0S2MKiJ2HEiHPqF8O3vKwPG8CrJ9pWZApZA8zhfyZCvIao4KyecX7ZBfWe01T9c9ZB6ZCZA3j8UOp2iE9s1uZAKsWtF6LocH1wu5KPoTFH",
+      "delivery_single": 120,
+      "delivery_multiple": 160,
+      "admin_telegram_bot_token": "",
+      "admin_telegram_chat_id": ""
+    }
+  ]
+}

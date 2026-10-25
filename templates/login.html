@@ -6,6 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SalesBot Admin Login</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: Arial, sans-serif;
       background: #f3f5f9;
@@ -14,24 +18,44 @@
       align-items: center;
       min-height: 100vh;
       margin: 0;
+      padding: 20px;
     }
+
     .login-box {
       background: white;
       padding: 32px;
       border-radius: 12px;
       box-shadow: 0 5px 25px #0001;
-      width: 320px;
+      width: 100%;
+      max-width: 384px;
     }
-    h2 { text-align: center; color: #222; }
-    label { display: block; margin-top: 16px; }
+
+    h2 {
+      text-align: center;
+      color: #222;
+      margin: 0 0 22px;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      color: #333;
+    }
+
     input {
-      box-sizing: border-box;
       width: 100%;
       padding: 12px;
       margin-top: 6px;
       border: 1px solid #ccc;
       border-radius: 6px;
+      font-size: 16px;
     }
+
+    input:focus {
+      outline: 2px solid #93b4ff;
+      border-color: #2563eb;
+    }
+
     button {
       width: 100%;
       margin-top: 22px;
@@ -41,23 +65,70 @@
       border: 0;
       border-radius: 6px;
       cursor: pointer;
+      font-size: 16px;
     }
-    .error { color: #c00; text-align: center; }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .error {
+      color: #b91c1c;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .success {
+      color: #166534;
+      background: #f0fdf4;
+      padding: 10px;
+      border-radius: 6px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <form class="login-box" method="POST">
+  <form class="login-box" method="POST" action="{{ url_for('admin_login_post', next=request.args.get('next', '')) }}">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
     <h2>SalesBot Admin</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <p class="{{ 'error' if category == 'error' else 'success' }}">
+          {{ message }}
+        </p>
+      {% endfor %}
+    {% endwith %}
+
     {% if error %}
       <p class="error">{{ error }}</p>
     {% endif %}
-    <label>Username</label>
-    <input type="text" name="username" required>
-    <label>Password</label>
-    <input type="password" name="password" required>
+
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      autocomplete="username"
+      required
+      autofocus
+    >
+
+    <label for="password">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      autocomplete="current-password"
+      required
+    >
+
     <button type="submit">Login</button>
   </form>
 </body>
 </html>
-

@@ -47,6 +47,7 @@
 </head>
 <body>
   <form class="login-box" method="POST">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <h2>SalesBot Admin</h2>
     {% if error %}
       <p class="error">{{ error }}</p>

@@ -1,1 +1,62 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SalesBot Admin Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f5f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .login-box {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 5px 25px #0001;
+      width: 320px;
+    }
+    h2 { text-align: center; color: #222; }
+    label { display: block; margin-top: 16px; }
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      border: 0;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .error { color: #c00; text-align: center; }
+  </style>
+</head>
+<body>
+  <form class="login-box" method="POST">
+    <h2>SalesBot Admin</h2>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    <label>Username</label>
+    <input type="text" name="username" required>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>
+
